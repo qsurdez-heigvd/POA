@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Laboratoire 4&colon; Buffy</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <p><a href="https://classroom.github.com/a/atAt-hrK"><img src="https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg" alt="Review Assignment Due Date"></a></p>
+<h1 id="laboratoire-4-buffy">Laboratoire 4: Buffy</h1>
+<p><strong>Date de rendu: 17/06/2023 17:00</strong></p>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>Buffy, la tueuse, doit sauvegarder l’espèce humaine de la menace des vampires. L’application doit permettre de simuler les actions des vampires, des humains et de Buffy (dénotés par la suite comme “humanoïdes”), en mode “tour par tour” et d’effectuer des statistiques sur un ensemble de simulations.</p>
+<ul>
+<li>Buffy (B), les vampires (V) et les humains (h) sont placés aléatoirement sur une grille. La taille de la grille, le nombre d’humains et de vampires sont passés en paramètre du programme.</li>
+<li>Un menu affiche le numéro du tour courant et permet de passer au tour suivant (n ou &lt;entrée&gt;), d’effectuer des statistiques (s) ou de quitter le programme (q).</li>
+<li>A chaque tour de la simulation chaque humanoïde décide de sa prochaine action. Toutes les actions sont ensuite résolues simultanément (pour ne pas avantager les premiers humanoïdes dans la liste). L’état résultant de la simulation est ensuite affiché.</li>
+</ul>
+<p><img src="https://github.com/HEIGVD-POA/lab4-buffy/assets/3931601/98222a3e-bfa9-4a43-9a26-0995fa4cf476" alt="image"></p>
+<p>Remarque: les codes couleurs dépendent de la plateforme, ils sont donc facultatifs à implémenter (en revanche, s'ils sont implémentés, ils doivent pouvoir être désactivés à la compilation pour éviter les problèmes).</p>
+<h2 id="2-actions">2. Actions</h2>
+<ul>
+<li>Chaque humain se déplace au hasard sur la grille, d’une case à la fois.</li>
+<li>Buffy attaque le vampire le plus proche. S’il est à une case de distance elle peut le tuer, sinon elle le chasse en avançant de deux cases dans sa direction. Si tous les vampires sont détruits, elle se déplacera au hasard sur la grille (comme les humains).</li>
+<li>Chaque vampire attaque l’humain (mais pas Buffy) le plus proche. S’il est à une case de distance il peut le tuer ou le transformer en vampire (une chance sur deux), sinon, il le chasse en avançant d’une case dans sa direction. Attention: un humain ne peut donner naissance qu’à un seul vampire. S’il n’y a plus d’humains à chasser, le vampire reste sur place pour dormir.</li>
+<li>Les statistiques (commande s) sont obtenues en effectuant 10’000 simulations pour les mêmes conditions initiales données (taille de la grille, nombre de vampires et d’humains, mais placement aléatoire), mais sans afficher le déplacement des humanoïdes. Chaque simulation est arrêtée lorsqu’il n’y a plus de vampires. Sur l’ensemble des simulations le pourcentage de succès de Buffy (pourcentage des simulations où au moins un humain reste vivant) est calculé et affiché.</li>
+</ul>
+<h2 id="3-mise-en-oeuvre">3. Mise en oeuvre</h2>
+<ul>
+<li>Concevoir un diagramme de classes permettant de factoriser au maximum le code et de dissocier la gestion de l’interface graphique du comportement des humanoïdes (une simulation doit pouvoir être réalisée sans affichage graphique, comme dans le cas du calcul des statistiques).</li>
+<li>Chaque classe d’humanoïde doit référencer un objet Action, caractérisant la prochaine action à effectuer. Cette classe Action doit posséder une méthode void execute(Field&amp; f) permettant d’exécuter l’action courante en influant sur l’environnement, représenté par la classe Field.</li>
+<li>La classe Field permet de faire évoluer les humanoïdes sur une grille. Ceux-ci seront manipulés au moyen d’une liste STL. Cette classe doit fournir une méthode pour simuler un tour. Le code d'exemple ci-après peut servir de base à la réalisation de cette méthode (vous pouvez l'utiliser telle quelle ou la modifier, par exemple en utiliser des smart pointer).</li>
+</ul>
+<pre><code class="language-c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">Field::nextTurn</span><span class="hljs-params">()</span>
+</span>{
+  <span class="hljs-comment">// Déterminer les prochaines actions</span>
+  <span class="hljs-keyword">for</span> (list&lt;Humanoid*&gt;::iterator it = humanoids.<span class="hljs-built_in">begin</span>(); it != humanoids.<span class="hljs-built_in">end</span>(); it++)
+    (*it)-&gt;<span class="hljs-built_in">setAction</span>(*<span class="hljs-keyword">this</span>);
+  <span class="hljs-comment">// Executer les actions</span>
+  <span class="hljs-keyword">for</span> (list&lt;Humanoid*&gt;::iterator it = humanoids.<span class="hljs-built_in">begin</span>(); it != humanoids.<span class="hljs-built_in">end</span>(); it++)
+    (*it)-&gt;<span class="hljs-built_in">executeAction</span>(*<span class="hljs-keyword">this</span>);
+  <span class="hljs-comment">// Enlever les humanoides tués</span>
+  <span class="hljs-keyword">for</span> (list&lt;Humanoid*&gt;::iterator it = humanoids.<span class="hljs-built_in">begin</span>(); it != humanoids.<span class="hljs-built_in">end</span>(); ) {
+    <span class="hljs-keyword">if</span> (!(*it)-&gt;<span class="hljs-built_in">isAlive</span>()) {
+      Humanoid* toDelete = *it;
+      it = humanoids.<span class="hljs-built_in">erase</span>(it); <span class="hljs-comment">// suppression de l’élément dans la liste</span>
+      <span class="hljs-keyword">delete</span> *toDelete; <span class="hljs-comment">// destruction de l’humanoide référencé</span>
+    }
+    <span class="hljs-keyword">else</span>
+      ++it;
+  }
+  <span class="hljs-keyword">return</span> turn++;
+}
+</code></pre>
+<ul>
+<li>La classe Field doit également offrir une méthode permettant de trouver l’humanoïde, instance d’une classe donnée, le plus proche d’un humanoïde donné.</li>
+<li>Il n’est pas interdit d’empêcher que deux humanoïdes occupent la même case de la grille ou de concevoir des algorithmes plus performants que celui proposé pour augmenter le pourcentage de succès de Buffy.</li>
+<li>Le rapport inclura (entre autres) le pourcentage de succès de Buffy pour les conditions initiales: grille de 50x50, 10 vampires et 20 humains.</li>
+</ul>
+
+            
+            
+        </body>
+        </html>

@@ -1,0 +1,84 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+'Je mets uniquement les méthodes et les attributs
+
+class Squadron {
+
+}
+
+abstract class Ship {
++ virtual double getWeight() const
++ virtual double getSpeed() const
++ virtual std::ostream &formatToStream(std::ostream &os) const
++ virtual void setNickName(const std::string &nickName) const
++ virtual std::string getFactoryName() const
+---
+# size_t factoryNumber
+- std::string nickName
+}
+
+abstract class CombatShip {
+---
+}
+
+abstract class CargoShip {
++ virtual double getCurrentCargo() const
++ virtual double getMaxCargo() const
+---
+# double currentCargo
+# double maxCargo
+}
+
+class TIE {
+- static size_t count
++ double getWeight() const
++ double getSpeed() const
++ std::ostream &formatToStream(std::ostream &os) const
++ std::string getFactoryName() const
+---
+}
+
+class TIEInterceptor {
+- static size_t count
++ double getWeight() const
++ double getSpeed() const
++ std::ostream &formatToStream(std::ostream &os) const
++ std::string getFactoryName() const
+---
+}
+
+class Shuttle {
+- static size_t count
++ double getWeight() const
++ double getSpeed() const
++ std::ostream &formatToStream(std::ostream &os) const
++ std::string getFactoryName() const
++ double getCurrentCargo() const
++ double getMaxCargo() const
+---
+}
+
+class StarDreadnought {
+- static size_t count
++ double getWeight() const
++ double getSpeed() const
++ std::ostream &formatToStream(std::ostream &os) const
++ std::string getFactoryName() const
++ double getCurrentCargo() const
++ double getMaxCargo() const
+---
+}
+
+Ship <|-- CombatShip
+Ship <|-- CargoShip
+
+CargoShip <|-- Shuttle
+CargoShip <|-- StarDreadnought
+
+CombatShip <|-- TIE
+CombatShip <|-- TIEInterceptor
+
+Squadron "*" -- "*" Ship
+
+@enduml
